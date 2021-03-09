@@ -88,17 +88,93 @@ package main;
 //	}
 //}
 
-//list05-05 引数の例(渡す値が複数の場合)
-public class Main {
+//list05-06 引数を使わずにできないか？
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		int x = 100;
+//		int y = 10;
+//		add();
+//	}
+//
+//	public static void add() {
+//		// xとyは宣言されたmainメソッドのスコープ外なのでエラーになる
+//		// mainメソッドのローカル変数x, y と、addメソッドのローカル変数x, yは全くの別物
+//		int ans = x + y;
+//		System.out.println(x + "+" + y + "=" + ans);
+//	}
+//}
 
-	public static void main(String[] args) {
-		add(100, 20);
-		add(200, 50);
+// 5.3.1 戻り値とは
+//public statis 戻り値の型 メソッド名(引数リスト) {
+// 戻り値の型(return文によって戻される値と同じ型を指定する
+//	メソッドが実行されたときに動く処理
+//	return 戻り値(変数に入っている値を戻すには変数名を指定する);
+//}
+
+//5.3.2 戻り値を受け取る
+// 型　変数名 = メソッド名(引数リスト);
+
+
+//list05-07 戻り値の例
+//public class Main {
+//
+//	public static int add(int x, int y) {
+//		int ans = x + y;
+//		return ans;
+//	}
+//
+//	public static void main(String[] args) {
+//		int ans = add(100, 10);
+//		System.out.println("100 + 10 = " + ans);
+//	}
+//}
+
+
+//list05-08 戻り値をそのまま使う
+//public class Main {
+//
+//	public static int add(int x, int y) {
+//		int ans = x + y;
+//		return ans;
+//	}
+//
+//	public static void main(String[] args) {
+//		System.out.println( add( add(10, 20), add(30, 40) ) );
+//	}
+//}
+
+// list05-09 誤ったreturn文
+//public class Main {
+//	public static int sample(int x, int y) {
+//		int ans = x + y;
+//		return ans; // return文で処理を抜ける
+//		int x = 10; // return文の後ろに書いても実行できないでコンパイルエラーになる
+//	}
+//}
+
+//list05-10 オーバーロード(引数の型が異なる場合は可能)
+public class Main {
+	// 一つ目のadd メソッド(int型)
+	public static int add(int x, int y) {
+		return x + y;
 	}
 
-	public static void add(int x, int y) {
-		int ans = x + y;
-		System.out.println(x + "+" + y + "=" + ans);
+	// 二つ目のadd メソッド(double型)
+	public static double add(double x, double y) {
+		return x + y;
+	}
+
+	// 三つ目のadd メソッド(String型)
+	public static String add(String x, String y) {
+		return x + y;
+	}
+
+	// main メソッド
+	public static void main(String[] args) {
+		System.out.println(add(10, 20));
+		System.out.println(add(3.5, 2.7));
+		System.out.println(add("Hello ", "World"));
 	}
 }
 
