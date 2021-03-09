@@ -154,29 +154,128 @@ package main;
 //}
 
 //list05-10 オーバーロード(引数の型が異なる場合は可能)
+//public class Main {
+//	// 一つ目のadd メソッド(int型)
+//	public static int add(int x, int y) {
+//		return x + y;
+//	}
+//
+//	// 二つ目のadd メソッド(double型)
+//	public static double add(double x, double y) {
+//		return x + y;
+//	}
+//
+//	// 三つ目のadd メソッド(String型)
+//	public static String add(String x, String y) {
+//		return x + y;
+//	}
+//
+//	// main メソッド
+//	public static void main(String[] args) {
+//		System.out.println(add(10, 20));
+//		System.out.println(add(3.5, 2.7));
+//		System.out.println(add("Hello ", "World"));
+//	}
+//}
+
+//list05-11 オーバーロード(引数の数が異なる場合は可能)
+//public class Main {
+//	// 一つ目のadd メソッド(int型 2つ)
+//	public static int add(int x, int y) {
+//		return x + y;
+//	}
+//
+//	// 二つ目のadd メソッド(int型 3つ)
+//	public static int add(int x, int y, int z) {
+//		return x + y + z;
+//	}
+//
+//	// main メソッド
+//	public static void main(String[] args) {
+//		System.out.println("10 + 20 = " + add(10, 20));
+//		System.out.println("10 + 20 + 30 = " + add(10, 20, 30));
+//	}
+//}
+
+// list05-12 配列が引数
+//public class Main {
+//
+//	public static void printArray(int[] array) {
+//		for (int element : array) {
+//			System.out.println(element);
+//		}
+//	}
+//	public static void main(String[] args) {
+//		int[] array =  {1, 2, 3};
+//		printArray(array);
+//	}
+//}
+
+// 5.5.2 値渡しと参照渡し
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		int x = 100;
+//		// methodAを呼び出した時点での変数xの値(100)が、メソッドの仮引数xにコピーされる
+//		methodA(x);
+//	}
+//	// 変数xに代入されている値100が渡されている(値渡し)
+//	public static void methodA(int x) {
+//		System.out.println(x);
+//	}
+//}
+
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		int[] array = {1, 2, 3}; // arrayには配列の先頭要素のアドレスが代入される
+//		// printArrayを呼び出した時点での配列arrayのアドレスが、メソッドの仮引数arrayにコピーされる
+//		printArray(array);
+//	}
+//	// mainメソッド内の変数array と、printArrayメソッド内の引数array はどちらも配列の実体を参照した状態になる(参照の値渡し)
+//	public static void printArray(int[] array) {
+//		System.out.println(array);
+//	}
+//}
+
+// list05-13 同じ配列を参照していることを確認する
+//public class Main {
+//	public static void incArray(int[] array) {
+//
+//		for (int i = 0; i < array.length; i++) {
+//			array[i]++;
+//			// returnを返さないでおく
+//		}
+//	}
+//	public static void main(String[] args) {
+//		int[] array = {1, 2, 3};
+//		incArray(array);
+//		for(int i : array) {
+//			System.out.println(i);
+//		}
+//	}
+//}
+
+//list05-14 戻り値が配列の場合
 public class Main {
-	// 一つ目のadd メソッド(int型)
-	public static int add(int x, int y) {
-		return x + y;
+
+	public static int[] makeArray(int size) { // ③ mainメソッドのmakeArray(3)にアドレスを渡す
+		int[] newArray = new int[size]; // ②はじまり
+		for (int i = 0; i < newArray.length; i++) {
+			newArray[i] = i;
+		}
+		return newArray; // returnを返す ②終わり 配列の戦闘要素がmainメソッドに戻される
 	}
 
-	// 二つ目のadd メソッド(double型)
-	public static double add(double x, double y) {
-		return x + y;
-	}
-
-	// 三つ目のadd メソッド(String型)
-	public static String add(String x, String y) {
-		return x + y;
-	}
-
-	// main メソッド
 	public static void main(String[] args) {
-		System.out.println(add(10, 20));
-		System.out.println(add(3.5, 2.7));
-		System.out.println(add("Hello ", "World"));
+
+		int[] array = makeArray(3); // ①, ④ arrayのアドレスを参照
+		for(int i : array) {
+			System.out.println(i);
+		}
 	}
 }
+
 
 // 雛形
 // list05-
