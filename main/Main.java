@@ -257,24 +257,118 @@ package main;
 //}
 
 //list05-14 戻り値が配列の場合
-public class Main {
+//public class Main {
+//
+//	public static int[] makeArray(int size) { // ③ mainメソッドのmakeArray(3)にアドレスを渡す
+//		int[] newArray = new int[size]; // ②はじまり
+//		for (int i = 0; i < newArray.length; i++) {
+//			newArray[i] = i;
+//		}
+//		return newArray; // returnを返す ②終わり 配列の戦闘要素がmainメソッドに戻される
+//	}
+//
+//	public static void main(String[] args) {
+//
+//		int[] array = makeArray(3); // ①, ④ arrayのアドレスを参照
+//		for(int i : array) {
+//			System.out.println(i);
+//		}
+//	}
+//}
 
-	public static int[] makeArray(int size) { // ③ mainメソッドのmakeArray(3)にアドレスを渡す
-		int[] newArray = new int[size]; // ②はじまり
-		for (int i = 0; i < newArray.length; i++) {
-			newArray[i] = i;
-		}
-		return newArray; // returnを返す ②終わり 配列の戦闘要素がmainメソッドに戻される
+// practice05-01
+//public class Main {
+//	public static void main(String[] args) {
+//		introduceOneself();
+//	}
+//
+//	public static void introduceOneself() {
+//		String name = "天才";
+//		int age = 20;
+//		double height = 190.0;
+//		char gender = '男';
+//		System.out.println("私の名前は" + name + "です。\n年は" + age + "です。\n" + "身長は" + height + "cmです。\n" + "性別は" + gender + "です。");
+//	}
+//}
+
+// practice05-02
+//public class Main {
+//	public static void main(String[] args) {
+//		String title ="天才試験結果のご連絡";
+//		String address = "example@xxxxxxxx.com";
+//		String text = "「合格しました」";
+//		email(title, address, text);
+//	}
+//
+//	public static void email(String title, String address, String text) {
+//		System.out.println(address + "に、以下のメールを送信しました");
+//		System.out.println("件名：" + title);
+//		System.out.println("本文：" + text);
+//	}
+//}
+
+//practice05-03
+//public class Main {
+//	public static void main(String[] args) {
+//		String address = "example@xxxxxxxx.com";
+//		String text = "「合格しました」";
+//		email(address, text);
+//	}
+//	public static void email(String address, String text) {
+//		System.out.println(address + "に、以下のメールを送信しました");
+//		System.out.println("件名：無題");
+//		System.out.println("本文：" + text);
+//	}
+//	public static void email(String title, String address, String text) {
+//		System.out.println(address + "に、以下のメールを送信しました");
+//		System.out.println("件名：" + title);
+//		System.out.println("本文：" + text);
+//	}
+//}
+
+// practice05-04
+// 模範解答
+public class Main {
+	public static void main(String[] args) {
+		double triangleArea = calcTriangleArea(10.0, 5.0);
+		System.out.println("三角形の面積：" + triangleArea + "平方cm");
+		double circleArea = calcCircleArea(5.0);
+		System.out.println("円の面積：" + circleArea + "平方cm");
 	}
 
-	public static void main(String[] args) {
+	public static double calcTriangleArea(double bottom, double height) {
+		double triangle = bottom * height / 2;
+		return triangle;
+	}
 
-		int[] array = makeArray(3); // ①, ④ arrayのアドレスを参照
-		for(int i : array) {
-			System.out.println(i);
-		}
+	public static double calcCircleArea(double radius) {
+		double circle = radius * radius * 3.14;
+		return circle;
 	}
 }
+
+// 自分で解答したコード
+//public class Main {
+//	public static double calcTriangleArea() {
+//		double bottom = 10.0;
+//		double height = 5.0;
+//		double triangle = bottom * height / 2;
+//		return triangle;
+//	}
+//
+//	public static double calcCircleArea() {
+//		double radius = 5.0;
+//		double circle = radius * radius * 3.14;
+//		return circle;
+//	}
+//
+//	public static void main(String[] args) {
+//		calcTriangleArea();
+//		calcCircleArea();
+//		System.out.println("三角形の面積：" + calcTriangleArea() + "平方cm");
+//		System.out.println("円の面積：" + calcCircleArea() + "平方cm");
+//	}
+//}
 
 
 // 雛形
