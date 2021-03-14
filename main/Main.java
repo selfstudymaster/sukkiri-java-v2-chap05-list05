@@ -11,6 +11,7 @@ package main;
 //	}
 //}
 
+
 //list05-02 メソッドの呼び出し
 //public class Main {
 //
@@ -30,26 +31,30 @@ package main;
 //
 //}
 
+
 //list05-03 mainメソッドの外からメソッドを呼び出す
 // main()メソッドが後に書かれててもmain()メソッドから動き始める
 
 //public class Main {
 //
-//	public static void methodA() {
-//		System.out.println("methodA");
+//	// methodAメソッド内でmethodBメソッドを呼び出す
+//	public static void methodA() { // 3
+//		System.out.println("methodA"); //4
 //		// methodBの呼び出し
-//		methodB();
+//		methodB(); // 5
 //	}
 //
-//	public static void methodB() {
-//		System.out.println("methodB");
+//	public static void methodB() { // 6
+//		System.out.println("methodB"); // 7
 //	}
 //
-//	public static void main(String[] args) {
+//	// mainメソッド内でmethodAメソッドを呼び出す
+//	public static void main(String[] args) { // 1
 //		// methodAの呼び出し
-//		methodA();
+//		methodA(); // 2
 //	}
 //}
+
 
 //list05-04 引数の例(渡す引数が1つの場合)
 //public class Main {
@@ -66,13 +71,14 @@ package main;
 //		System.out.println("メソッドを呼び出しが終わりました");
 //	}
 //
-//	// hello()メソッドに引数の型Stringと引数に変数nameを宣言
+//	// hello()メソッドの引数リスト(()内)に、引数の型Stringと引数となる変数nameを宣言
 //	public static void hello(String name) {
 //		// 変数nameに引数の値が代入される
 //		System.out.println(name + "さん、こんにちは");
 //	}
 //
 //}
+
 
 //list05-05 引数の例(渡す値が複数の場合)
 //public class Main {
@@ -87,6 +93,7 @@ package main;
 //		System.out.println(x + "+" + y + "=" + ans);
 //	}
 //}
+
 
 //list05-06 引数を使わずにできないか？
 //public class Main {
@@ -106,19 +113,20 @@ package main;
 //}
 
 // 5.3.1 戻り値とは
-//public statis 戻り値の型 メソッド名(引数リスト) {
-// 戻り値の型(return文によって戻される値と同じ型を指定する
+//public static 戻り値の型(void等) メソッド名(引数リスト) {
+// 戻り値の型(return文によって戻される値と同じ型を指定する)
 //	メソッドが実行されたときに動く処理
 //	return 戻り値(変数に入っている値を戻すには変数名を指定する);
 //}
-
-//5.3.2 戻り値を受け取る
+//
+// 5.3.2 戻り値を受け取る
 // 型　変数名 = メソッド名(引数リスト);
 
 
 //list05-07 戻り値の例
 //public class Main {
 //
+//	// public static 戻り値の型 メソッド名(引数リスト) {}
 //	public static int add(int x, int y) {
 //		int ans = x + y;
 //		return ans;
@@ -127,6 +135,7 @@ package main;
 //	public static void main(String[] args) {
 //		int ans = add(100, 10);
 //		System.out.println("100 + 10 = " + ans);
+//
 //	}
 //}
 
@@ -143,6 +152,7 @@ package main;
 //		System.out.println( add( add(10, 20), add(30, 40) ) );
 //	}
 //}
+
 
 // list05-09 誤ったreturn文
 //public class Main {
@@ -178,7 +188,7 @@ package main;
 //	}
 //}
 
-//list05-11 オーバーロード(引数の数が異なる場合は可能)
+//list05-11 オーバーロード(引数の型が同じでも数が異なる場合は可能)
 //public class Main {
 //	// 一つ目のadd メソッド(int型 2つ)
 //	public static int add(int x, int y) {
@@ -207,6 +217,25 @@ package main;
 //	}
 //	public static void main(String[] args) {
 //		int[] array =  {1, 2, 3};
+//		printArray(array);
+//	}
+//}
+
+//public class Main {
+//
+//	// int型の配列を戻り値にもつ変数arrayのメソッドprintArrayを定義
+//	public static void printArray(int[] array) {
+//		// 「配列arrayからelementに値を代入し、表示させる」を繰り返す
+//		for (int element : array) {
+//			System.out.println(element);
+//		}
+//	}
+//
+//	public static void main(String[] args) {
+//		// 配列arrayに値を代入
+//		int[] array = {1, 2, 3};
+//
+//		// printArrayメソッドを呼び出す(→上で定義した処理が実行される)
 //		printArray(array);
 //	}
 //}
@@ -328,47 +357,47 @@ package main;
 
 // practice05-04
 // 模範解答
-public class Main {
-	public static void main(String[] args) {
-		double triangleArea = calcTriangleArea(10.0, 5.0);
-		System.out.println("三角形の面積：" + triangleArea + "平方cm");
-		double circleArea = calcCircleArea(5.0);
-		System.out.println("円の面積：" + circleArea + "平方cm");
-	}
-
-	public static double calcTriangleArea(double bottom, double height) {
-		double triangle = bottom * height / 2;
-		return triangle;
-	}
-
-	public static double calcCircleArea(double radius) {
-		double circle = radius * radius * 3.14;
-		return circle;
-	}
-}
-
-// 自分で解答したコード
 //public class Main {
-//	public static double calcTriangleArea() {
-//		double bottom = 10.0;
-//		double height = 5.0;
+//	public static void main(String[] args) {
+//		double triangleArea = calcTriangleArea(10.0, 5.0);
+//		System.out.println("三角形の面積：" + triangleArea + "平方cm");
+//		double circleArea = calcCircleArea(5.0);
+//		System.out.println("円の面積：" + circleArea + "平方cm");
+//	}
+//
+//	public static double calcTriangleArea(double bottom, double height) {
 //		double triangle = bottom * height / 2;
 //		return triangle;
 //	}
 //
-//	public static double calcCircleArea() {
-//		double radius = 5.0;
+//	public static double calcCircleArea(double radius) {
 //		double circle = radius * radius * 3.14;
 //		return circle;
 //	}
-//
-//	public static void main(String[] args) {
-//		calcTriangleArea();
-//		calcCircleArea();
-//		System.out.println("三角形の面積：" + calcTriangleArea() + "平方cm");
-//		System.out.println("円の面積：" + calcCircleArea() + "平方cm");
-//	}
 //}
+
+ // 自分で解答したコード
+public class Main {
+	public static double calcTriangleArea() {
+		double bottom = 10.0;
+		double height = 5.0;
+		double triangle = bottom * height / 2;
+		return triangle;
+	}
+
+	public static double calcCircleArea() {
+		double radius = 5.0;
+		double circle = radius * radius * 3.14;
+		return circle;
+	}
+
+	public static void main(String[] args) {
+		calcTriangleArea();
+		calcCircleArea();
+		System.out.println("三角形の面積：" + calcTriangleArea() + "平方cm");
+		System.out.println("円の面積：" + calcCircleArea() + "平方cm");
+	}
+}
 
 
 // 雛形
